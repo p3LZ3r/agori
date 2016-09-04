@@ -4,7 +4,7 @@ class MerchantsController < ApplicationController
   end
 
   def create
-    @merchant = Merchant.new(params[:user])
+    @merchant = Merchant.new(merchant_params)
     if @merchant.save
       redirect_to @merchant, notice: 'Success'
     else
@@ -15,4 +15,9 @@ class MerchantsController < ApplicationController
   def show
     @merchant = Merchant.find(params[:id])
   end
+
+  def merchant_params
+    params.require(:merchant).permit(:mail, :password, :name, :surname)
+  end
+
 end
