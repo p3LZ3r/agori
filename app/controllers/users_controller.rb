@@ -4,7 +4,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = nil
+    bFarmer = user_params[:farmer].to_i
+    bMerchant = user_params[:merchant].to_i
+    if bFarmer == bMerchant
+      redirect_to new
+    else
+      if bFarmer == 1
+        @user = Farmer.new(user_params)
+      else
+        @user = Merchant.new(user_params)
+      end
+    end
     if @user.save
       redirect_to @user, notice: 'Success'
     else
@@ -17,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :name)
+    params.require(:user).permit(:email, :password, :name, :farmer, :merchant)
   end
 
 end
