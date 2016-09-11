@@ -1,6 +1,11 @@
 class User < ApplicationRecord
 #  attr_reader :mail, :name, :surname, :password
 
+  def initialize(args)
+    super(args)
+    self.type = ""
+  end
+
   def find_type_in_db
     other = User.find_by(email: self.email)
     return false if other == nil

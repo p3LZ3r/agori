@@ -1,9 +1,12 @@
 class Farmer < User
+
+  def initialize(args)
+    super(args)
+    self.type = "farmer"
+  end
+
   def self.model_name
     User.model_name
   end
 
-  def get_type
-    return "farmer"
-  end
 end
