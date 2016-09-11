@@ -6,10 +6,16 @@ class SessionsController < ApplicationController
   def create
     user = User.new({email: params[:session][:email],
       password: params[:session][:password]})
-    if user.find_in_db
+    type = user.find_in_db
+    if type != ""
+      if type == "merchant"
+        user = Merchant.new({email: params[:session][:email],
+          password: params[:session][:password]})
+      else
+        user = Farmer.new({email: params[:session][:email],
+          password: params[:session][:password]})
+      end
       session[:id] = user.get_email
-      p "TEST"
-      p session[:id]
       redirect_to user
     else
       redirect_back fallback_location: {action: 'new'}

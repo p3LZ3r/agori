@@ -2,7 +2,9 @@
   <%= f.input :name %>
   <%= f.input :email %>
   <%= f.input :password %>
-  <%= f.input :merchant, as: :boolean %>
-  <%= f.input :farmer, as: :boolean %>
+  <%= label_tag "merchant", "Merchant" %>
+  <%= check_box_tag 'merchant' %>
+  <%= label_tag "farmer", "Farmer" %>
+  <%= check_box_tag 'farmer' %><br>
   <%= f.button :submit %>
 <% end %>
