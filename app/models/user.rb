@@ -3,7 +3,6 @@ class User < ApplicationRecord
 
   def initialize(args)
     super(args)
-    self.type = ""
   end
 
   def find_type_in_db
@@ -12,6 +11,7 @@ class User < ApplicationRecord
     if other.password != self.password
       return ""
     end
+    self.username = other.username
     return other.get_type
   end
 
@@ -21,6 +21,10 @@ class User < ApplicationRecord
 
   def get_type
     return self.type
+  end
+
+  def get_username
+    return self.username
   end
 
 end

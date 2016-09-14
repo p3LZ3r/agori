@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   get 'session' => 'sessions#current_session'
   get 'register' => 'users#new'
-  get 'account' => 'sessions#account_overview'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

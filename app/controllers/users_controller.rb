@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = User.new({})
   end
 
   def create
@@ -27,10 +27,15 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(username: params[:id])
+    if @user == nil
+      @user = User.find_by(id: params[:id])
+    end
+    p @user.get_type
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :name, :type)
+    params.require(:user).permit(:email, :password, :name, :username, :type)
   end
 
 end

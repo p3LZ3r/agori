@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 20160911105204) do
     t.string "created_at"
     t.string "updated_at"
     t.string "password"
+    t.string "username"
     t.string "type"
+    t.index ["username"], name: "sqlite_autoindex_users_1", unique: true
   end
 
 end
