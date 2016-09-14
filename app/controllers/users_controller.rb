@@ -27,11 +27,27 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(username: params[:id])
-    if @user == nil
+    @user = nil
+    if params[:type] == nil
       @user = User.find_by(id: params[:id])
+    else
+      if params[:type] == "Farmer"
+        redirect_to action:"farmer_account", id: params[:id]
+      elsif params[:type] == "Merchant"
+        redirect_to action:"merchant_account", id: params[:id]
+        @user = Merchant.find_by(username: params[:id])
+      else
+        redirect_back fallback_location: {action:create}
+      end
     end
-    p @user.get_type
+  end
+
+  def farmer_account
+    @product = Grain.new
+  end
+
+  def merchant_account
+
   end
 
   def user_params

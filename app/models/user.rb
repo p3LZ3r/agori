@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-#  attr_reader :mail, :name, :surname, :password
 
   def initialize(args)
     super(args)
@@ -12,6 +11,7 @@ class User < ApplicationRecord
       return ""
     end
     self.username = other.username
+    self.type = other.get_type
     return other.get_type
   end
 
