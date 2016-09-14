@@ -43,11 +43,15 @@ class UsersController < ApplicationController
   end
 
   def farmer_account
-    @product = Grain.new
+    @products = Product.new
   end
 
   def merchant_account
 
+  end
+
+  def save_farmer_product
+    redirect_to action: 'farmer_account'
   end
 
   def user_params

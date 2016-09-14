@@ -1,25 +1,37 @@
-class Grain < ApplicationRecord
-  def get_name
-    return Grain.find_by(hierarhcy: 1).name
-  end
+class Product < ApplicationRecord
 
-  def get_grain_type_name_array
-    x = Grain.where(hierarchy: 2).all
+private
+  def get_hierarchy_type_x_names(type, x)
     ret = Array.new
-    x.each do |y|
-      ret.push(y.name)
-    end
-    return ret
-  end
-
-  def get_hierarchy_type_3_names(type)
-    ret = Array.new
-    type.each do |x|
-      if x.hierarchy == 3
-        ret.push(x.name)
+    type.each do |y|
+      if y.hierarchy == x
+        ret.push(y.name)
       end
     end
     return ret
+  end
+
+  def get_hierarchy_type_1_names(type)
+    get_hierarchy_type_x_names(type, 1)
+  end
+
+  def get_hierarchy_type_2_names(type)
+    get_hierarchy_type_x_names(type, 2)
+  end
+
+  def get_hierarchy_type_3_names(type)
+    get_hierarchy_type_x_names(type, 3)
+  end
+
+public
+  def get_product_name_array
+    pr = Product.all
+    get_hierarchy_type_1_names(pr)
+  end
+
+  def get_grain_name_array
+    g = Grain.all
+    get_hierarchy_type_2_names(g)
   end
 
   def get_wheat_name_array
@@ -36,6 +48,9 @@ class Grain < ApplicationRecord
     r = Rey.all
     get_hierarchy_type_3_names(r)
   end
+end
+
+class Grain < Product
 end
 
 class Wheat < Grain

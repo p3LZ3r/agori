@@ -1,1 +1,9 @@
 <h1> FARMER OVERVIEW LATER HERE </h1>
+
+<h1> ADD NEW PRODUCT </h1>
+<%= simple_form_for(:list, :defaults => {:required => false}) do |f| %>
+<%= f.input :hierarchy1, collection: @products.get_product_name_array %>
+<%= f.input :hierarchy2, collection: @products.get_grain_name_array %>
+<%= f.input :hierarchy3, collection: @products.get_wheat_name_array %>
+<%= f.button :submit %>
+<% end %>

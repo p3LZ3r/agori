@@ -2,8 +2,10 @@
 
 one:
   name: MyString
+  hierarchy: 1
   type: 
 
 two:
   name: MyString
+  hierarchy: 1
   type: 

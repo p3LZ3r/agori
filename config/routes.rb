@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  resources :products
   get 'login' => 'sessions#new', as: :sessions
   post '/login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   get 'register' => 'users#new'
   get 'merchant_account' => 'users#merchant_account'
   get 'farmer_account' => 'users#farmer_account'
+  post 'farmer_account' => 'users#save_farmer_product'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

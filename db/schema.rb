@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914101220) do
+ActiveRecord::Schema.define(version: 20160914132545) do
 
-  create_table "grains", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "name"
+    t.integer  "hierarchy"
     t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
