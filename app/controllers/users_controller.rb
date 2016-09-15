@@ -43,6 +43,11 @@ class UsersController < ApplicationController
   end
 
   def farmer_account
+    @currentProducts = OfferedProduct.all
+    if @currentProducts == nil
+      @currentProducts = Product.new
+    end
+    @user = Farmer.find_by(username: params[:id])
     @products = Product.new
   end
 
@@ -51,7 +56,12 @@ class UsersController < ApplicationController
   end
 
   def save_farmer_product
-    redirect_to action: 'farmer_account'
+    information = {username: params[:id],
+      product: params[:product][:hierarchy3], price: params[:product][:price],
+      amount: params[:product][:amount]}
+    @product = OfferedProduct.new(information)
+    @product.save
+    redirect_to action: 'farmer_account', id: params['id']
   end
 
   def user_params
