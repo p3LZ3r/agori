@@ -20,13 +20,16 @@ class UsersController < ApplicationController
       redirect_to new
     end
     if @user.save
-      redirect_to @user
+      p "TESTI"
+      redirect_to action: 'created_user'
     else
       render action: 'new'
     end
   end
 
   def show
+    p "TEST"
+    p params
     @user = nil
     if params[:type] == nil
       @user = User.find_by(id: params[:id])
@@ -42,6 +45,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def created_user
+  end
+
   def farmer_account
     @currentProducts = OfferedProduct.all
     if @currentProducts == nil
@@ -52,7 +58,8 @@ class UsersController < ApplicationController
   end
 
   def merchant_account
-
+    @user = Merchant.find_by(username: params[:id])
+    @searchedProduct = Product.new
   end
 
   def save_farmer_product

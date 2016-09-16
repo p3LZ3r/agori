@@ -1,1 +1,12 @@
 <h1> MERCHANT OVERVIEW LATER HERE </h1>
+
+<h1> NEW SEARCH </h1>
+
+<h1> FOUND PRODUCTS </h1>
+<%= simple_form_for(:product) do |f| %>
+  <%= f.input :hierarchy1, collection: @searchedProduct.get_product_name_array %>
+  <%= f.input :hierarchy2, collection: @searchedProduct.get_grain_name_array %>
+  <%= f.input :hierarchy3, collection: @searchedProduct.get_wheat_name_array %>
+  <%= hidden_field_tag(:id, @user.get_username) %>
+  <%= f.button :submit, 'Seach'%>
+<% end %>

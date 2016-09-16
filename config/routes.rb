@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   get 'session' => 'sessions#current_session'
   get 'register' => 'users#new'
+  get 'created_user' => 'users#created_user'
   get 'merchant_account' => 'users#merchant_account'
   get 'farmer_account' => 'users#farmer_account'
   post 'farmer_account' => 'users#save_farmer_product'
