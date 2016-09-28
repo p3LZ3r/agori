@@ -1,0 +1,11 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :username %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= label_tag "merchant", "Merchant" %>
+  <%= check_box_tag 'merchant' %>
+  <%= label_tag "farmer", "Farmer" %>
+  <%= check_box_tag 'farmer' %><br>
+  <%= f.button :submit %>
+<% end %>
